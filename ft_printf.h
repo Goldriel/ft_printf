@@ -8,7 +8,7 @@
 int	ft_printf(const char *line, ...);
 int print_c(int c);
 int print_string(char *s);
-int print_char(unsigned char *s);
+int print_char(char *s);
 int print_num(int num);
 int print_u(unsigned int num);
 int print_pointr(unsigned long p);

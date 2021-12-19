@@ -1,4 +1,4 @@
-LIBFT = linft.a
+LIBFT = libft.a
 NAME = libftprintf.a
 CC = clang
 FLAGS = -Wall -Werror -Wextra
@@ -7,26 +7,26 @@ SRC	=	ft_printf.c\
 		print_hex.c\
 		print_num.c\
 		utoa_base.c
-OBJ = $(SRC: .c=.o)
+OBJ = $(patsubst %.c, %.o, $(SRC))
 
-%.o:	%.c ft_printf.h
+%.o:	%.c
 			$(CC) $(FLAGS) -c $< -o $@
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) ft_printf.h
 			$(MAKE) -C ./libft
 			cp ./libft/$(LIBFT) $(NAME)
 			ar -rc $(NAME) $(OBJ)
 
 clean: libftclean
-			re -f $(OBJ)
+			rm -f $(OBJ)
 
 fclean: clean libftfclean
 			rm -f $(NAME)
 
 libftclean:
-			$(MAKE) -c ./libft clean
+			$(MAKE) -C ./libft clean
 
 libftfclean:
 			$(MAKE) -C ./libft fclean

@@ -4,8 +4,10 @@ int print_pointr(unsigned long p)
 {
 	int count;
 	char *string;
+	char *start;
 
-	count = print_char("0x");
+	start = "0x";
+	count = print_char(start);
 	string = ft_utoa_base(p, 16);
 	count += print_char(string);
 	free(string);

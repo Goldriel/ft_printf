@@ -2,7 +2,7 @@
 
 int print_c(int c)
 {
-	write(1, &c. 1);
+	write(1, &c, 1);
 	return (1);
 }
 
@@ -25,7 +25,7 @@ int print_string(char *s)
 	return (count);
 }
 
-int print_char(unsigned char *s)
+int print_char(char *s) // unsigned
 {
 	int count;
 
