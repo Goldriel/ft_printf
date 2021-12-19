@@ -1,11 +1,34 @@
-# ************************************************************************** #
-#                                                                            #
-#                                                        :::      ::::::::   #
-#   Makefile                                           :+:      :+:    :+:   #
-#                                                    +:+ +:+         +:+     #
-#   By: jarrakis <jarrakis@student.21-school.ru >  +#+  +:+       +#+        #
-#                                                +#+#+#+#+#+   +#+           #
-#   Created: 2021/12/10 19:31:58 by jarrakis          #+#    #+#             #
-#   Updated: 2021/12/10 19:31:58 by jarrakis         ###   ########.fr       #
-#                                                                            #
-# ************************************************************************** #
+LIBFT = linft.a
+NAME = libftprintf.a
+CC = clang
+FLAGS = -Wall -Werror -Wextra
+SRC	=	ft_printf.c\
+		print_char.c\
+		print_hex.c\
+		print_num.c\
+		utoa_base.c
+OBJ = $(SRC: .c=.o)
+
+%.o:	%.c ft_printf.h
+			$(CC) $(FLAGS) -c $< -o $@
+
+all: $(NAME)
+			$(MAKE) -C ./libft
+			cp ./libft/$(LIBFT) $(NAME)
+			ar -rc $(NAME) $(OBJ)
+
+clean: libftclean
+			re -f $(OBJ)
+
+fclean: clean libftfclean
+			rm -f $(NAME)
+
+libftclean:
+			$(MAKE) -c ./libft clean
+
+libftfclean:
+			$(MAKE) -C ./libft fclean
+
+re: fclean all
+
+.PHONY: all clean fclean re
