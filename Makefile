@@ -13,6 +13,8 @@ OBJ = $(SRC: .c=.o)
 			$(CC) $(FLAGS) -c $< -o $@
 
 all: $(NAME)
+
+$(NAME): $(OBJ)
 			$(MAKE) -C ./libft
 			cp ./libft/$(LIBFT) $(NAME)
 			ar -rc $(NAME) $(OBJ)
