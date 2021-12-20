@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utoa_base.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jarrakis <jarrakis@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/20 17:10:32 by jarrakis          #+#    #+#             */
+/*   Updated: 2021/12/20 17:19:14 by jarrakis         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static size_t	numsize(unsigned long long num, int base)
@@ -13,7 +25,7 @@ static size_t	numsize(unsigned long long num, int base)
 	return (i);
 }
 
-static char *dtostr(char *string, size_t len, unsigned long long n, int base)
+static char	*dtostr(char *string, size_t len, unsigned long long n, int base)
 {
 	string[len] = '\0';
 	len--;
@@ -22,7 +34,7 @@ static char *dtostr(char *string, size_t len, unsigned long long n, int base)
 		if (n % base >= 10)
 			string[len] = ((n % base) - 10) + 'a';
 		else
-			string[len] = (n % base) + 48; // поменять на '0'
+			string[len] = (n % base) + '0';
 		n = n / base;
 		len--;
 	}

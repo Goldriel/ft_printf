@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jarrakis <jarrakis@student.21-school.ru    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/12/20 17:09:14 by jarrakis          #+#    #+#              #
+#    Updated: 2021/12/20 17:20:32 by jarrakis         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 LIBFT = libft.a
 NAME = libftprintf.a
 CC = clang
@@ -7,14 +19,15 @@ SRC	=	ft_printf.c\
 		print_hex.c\
 		print_num.c\
 		utoa_base.c
+
 OBJ = $(patsubst %.c, %.o, $(SRC))
 
-%.o:	%.c
+%.o:	%.c ft_printf.h
 			$(CC) $(FLAGS) -c $< -o $@
 
 all: $(NAME)
 
-$(NAME): $(OBJ) ft_printf.h
+$(NAME): $(OBJ)
 			$(MAKE) -C ./libft
 			cp ./libft/$(LIBFT) $(NAME)
 			ar -rc $(NAME) $(OBJ)

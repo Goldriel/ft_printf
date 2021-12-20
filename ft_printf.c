@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarrakis <jarrakis@student.21-school.ru >  +#+  +:+       +#+        */
+/*   By: jarrakis <jarrakis@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:35:15 by jarrakis          #+#    #+#             */
-/*   Updated: 2021/12/10 19:30:20 by jarrakis         ###   ########.fr       */
+/*   Updated: 2021/12/20 17:03:34 by jarrakis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	read_key(char c, va_list list)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (c == 'c')
@@ -41,7 +41,7 @@ int	read_key(char c, va_list list)
 
 int	ft_printf(const char *line, ...)
 {
-	int count;
+	int		count;
 	va_list	args;
 
 	if (!line)
